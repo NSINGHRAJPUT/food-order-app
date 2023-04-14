@@ -1,3 +1,4 @@
+import MealList from "./MealList";
 import "./Meals.css";
 
 const DUMMY_MEALS = [
@@ -31,12 +32,14 @@ const Meals = () => {
   return (
     <ul className="meals">
       {DUMMY_MEALS.map((meal) => (
-        <li>
-          <h3>{meal.name}</h3>
-          <p>{meal.description}</p>
-          <h4 className="price">Rs.{meal.price}</h4>
-          <hr></hr>
-        </li>
+        <div>
+          <MealList
+            key={meal.id}
+            name={meal.name}
+            description={meal.description}
+            price={meal.price}
+          />
+        </div>
       ))}
     </ul>
   );
