@@ -1,6 +1,6 @@
 .cart {
-  width: 60%;
-  margin-left: 19%;
+  width: 95%;
+  margin-left: 2%;
   background: white;
   padding: 1% 2% 5% 1%;
   border-radius: 25px;
@@ -10,11 +10,11 @@
   display: flex;
   justify-content: space-between;
 }
-button {
+.button-btn {
   width: 19%;
   padding: 2%;
-  background: chocolate;
-  display: flex;
-  justify-content: space-between;
+  text-align: center;
   float: right;
+  margin-right: 27%;
+  display: flex;
 }
