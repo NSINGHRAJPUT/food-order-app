@@ -1,4 +1,9 @@
-const MealList = ({ name, description, price, onMealsAdd }) => {
+import { useContext } from "react";
+import CartContext from "../../store/cart-context";
+
+const MealList = ({ name, description, price, id }) => {
+  const cartCtx = useContext(CartContext);
+
   let newAmount = 1;
   const amountHandler = (event) => {
     event.preventDefault();
@@ -8,12 +13,13 @@ const MealList = ({ name, description, price, onMealsAdd }) => {
     e.preventDefault();
     newAmount = newAmount * price;
     let obj = {
+      id: id,
       name: name,
       description: description,
       price: price,
       amount: newAmount,
     };
-    onMealsAdd(obj);
+    cartCtx.addItem(obj);
   };
   return (
     <li>

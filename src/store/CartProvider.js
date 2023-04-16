@@ -1,13 +1,22 @@
+import { useState } from "react";
 import CartContext from "./cart-context";
 
+const items = [];
 const CartProvider = (props) => {
-  const addMealToCart = (item) => {};
+  const [cartState, SetCartState] = useState(items);
+
+  const addMealToCart = (item) => {
+    SetCartState((preState) => {
+      return [item, ...preState];
+    });
+  };
   const removeMealFromCart = (id) => {};
+
   const cartContext = {
-    items: [],
+    items: cartState,
     totalAmount: 0,
-    addMeal: addMealToCart,
-    revmoveMeal: removeMealFromCart,
+    addItem: addMealToCart,
+    removeItem: removeMealFromCart,
   };
 
   return (
