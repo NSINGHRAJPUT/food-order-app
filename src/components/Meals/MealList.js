@@ -11,7 +11,6 @@ const MealList = ({ name, description, price, id }) => {
   };
   const mealsAddHandler = (e) => {
     e.preventDefault();
-    newAmount = newAmount * price;
     let obj = {
       id: id,
       name: name,
