@@ -10,7 +10,9 @@ const CartProvider = (props) => {
       return [item, ...preState];
     });
   };
-  const removeMealFromCart = (id) => {};
+  const removeMealFromCart = (id) => {
+    SetCartState(cartState.filter((item)=> item.id!==id))
+  };
 
   const cartContext = {
     items: cartState,
