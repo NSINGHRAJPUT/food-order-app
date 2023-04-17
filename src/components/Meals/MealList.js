@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import CartContext from "../../store/cart-context";
 
+
 const MealList = ({ name, description, price, id }) => {
   const cartCtx = useContext(CartContext);
 

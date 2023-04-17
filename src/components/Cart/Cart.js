@@ -1,14 +1,22 @@
 import "./Cart.css";
 import Modal from "../UI/Modal";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import CartContext from "../../store/cart-context";
 
 const Cart = ({ onCloseCart }) => {
   const cartCtx = useContext(CartContext);
+  const [orderedMeals,setOrderedMeals] = useState(false)
+
+  const orderHandler = () =>{
+    setOrderedMeals(true);
+  }
+  const addItemHandler=(e)=>{
+    e.preventDefault();
+    cartCtx.addItem(JSON.parse(e.target.value))
+  }
 
   const removeItemHandler = (e) =>{
     e.preventDefault();
-    console.log(e.target.value)
     cartCtx.removeItem(e.target.value)
   }
   let finalPrice=0;
@@ -24,11 +32,11 @@ const Cart = ({ onCloseCart }) => {
           <div className="amount-price">
             <div>
               <div>x{item.amount}</div>
-              <div>{item.price * item.amount}</div>
+              <div>{item.price}</div>
             </div>
             <div className="cart-btn">
               <button className="subtract" value={item.id} onClick={removeItemHandler}>-</button>
-              <button className="add" value = {item.id} >+</button>
+              <button className="add" value = {JSON.stringify(item)} onClick={addItemHandler}>+</button>
             </div>
           </div>
         </div>
@@ -39,8 +47,9 @@ const Cart = ({ onCloseCart }) => {
       </div>
       <div className="button-btn">
         <button onClick={onCloseCart}>Close</button>
-        <button>Order</button>
+        <button onClick={orderHandler}>Order</button>
       </div>
+      <div className="title">{orderedMeals && <p>Order Successful</p>}</div>
     </Modal>
   );
 };
